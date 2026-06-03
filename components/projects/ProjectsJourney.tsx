@@ -8,7 +8,6 @@ import {
   Code,
   ChevronDown,
   Users,
-  Download
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
@@ -19,15 +18,16 @@ import { CgWebsite } from "react-icons/cg";
 import AnimatedSection from "@/components/ui/animated-section";
 import { useState } from "react";
 
-const ProjectsJourney = () => {
+const ProjectsJourney = ({ skipFirst = false }: { skipFirst?: boolean }) => {
   const [expandedId, setExpandedId] = useState<number | null>(null);
+  const visibleProjects = skipFirst ? projects.slice(1) : projects;
 
   return (
     <AnimatedSection>
-      <div className="relative mt-8">
+      <div className="relative mt-2">
         <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 h-full w-0.5 bg-border"></div>
 
-        {projects.map((project: Project, index: number) => (
+        {visibleProjects.map((project: Project, index: number) => (
           <motion.div
             key={project.id}
             initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
@@ -190,25 +190,6 @@ const ProjectsJourney = () => {
                                   WEBSITE <CgWebsite />
                                 </Link>
                               )}
-                            </motion.p>
-                          )}
-
-                          {project.downloadUrl && (
-                            <motion.p
-                              initial={{ opacity: 0, x: -10 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ delay: 0.18 }}
-                              className={`text-foreground mb-4 ${index % 2 === 0 ? "md:text-right" : ""
-                                }`}
-                            >
-                              <Link
-                                href={project.downloadUrl}
-                                download
-                                onClick={(e) => e.stopPropagation()}
-                                className="cursor-target text-primary hover:underline inline-flex items-center gap-1 hover:scale-105 transition-transform"
-                              >
-                                DOWNLOAD <Download className="w-4 h-4" />
-                              </Link>
                             </motion.p>
                           )}
 

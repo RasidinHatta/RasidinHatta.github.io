@@ -5,11 +5,12 @@ import {
   ArrowRight,
   Code2,
   Database,
-  Download,
   ExternalLink,
   ShieldCheck,
   TerminalSquare,
 } from "lucide-react";
+import { AnimeMotionField } from "@/components/animation/anime-motion-field";
+import { AnimeScrollReveals } from "@/components/animation/anime-scroll-reveals";
 import { HeroShowcase } from "@/components/landing/hero-showcase";
 import CardFlip from "@/components/kokonutui/card-flip";
 import { LiquidGlassCard } from "@/components/kokonutui/liquid-glass-card";
@@ -91,11 +92,12 @@ const capabilityGroups = [
 export default function Home() {
   return (
     <div className="w-full">
+      <AnimeScrollReveals />
       <HeroShowcase />
 
-      <section className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 md:pl-[92px] lg:px-8 lg:pl-[92px]">
+      <section className="anime-reveal mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 md:pl-[92px] lg:px-8 lg:pl-[92px]">
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-          <div>
+          <div className="anime-reveal__item">
             <p className="text-sm font-semibold uppercase tracking-wide text-primary">
               Interface Direction
             </p>
@@ -112,7 +114,7 @@ export default function Home() {
             {interfaceHighlights.map((item) => (
               <CardFlip
                 key={item.title}
-                className="h-48 max-w-none"
+                className="anime-reveal__item h-48 max-w-none"
                 frontClassName="rounded-lg border-0 bg-transparent shadow-none"
                 backClassName="rounded-lg border-0 bg-transparent shadow-none"
                 front={
@@ -144,7 +146,28 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-border/60 bg-card/45">
+      <section className="anime-reveal border-y border-border/60 bg-card/45">
+        <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-14 sm:px-6 md:pl-[92px] lg:grid-cols-[0.85fr_1.15fr] lg:px-8 lg:pl-[92px]">
+          <div className="anime-reveal__item">
+            <p className="text-sm font-semibold uppercase tracking-wide text-primary">
+              Motion Playground
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold text-foreground sm:text-4xl">
+              A livelier portfolio with motion tuned for focus.
+            </h2>
+            <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground">
+              Small details now respond with more personality, giving each
+              section a lighter rhythm while keeping the work clear and easy to
+              scan.
+            </p>
+          </div>
+          <div className="anime-reveal__item">
+            <AnimeMotionField />
+          </div>
+        </div>
+      </section>
+
+      <section className="anime-reveal border-y border-border/60 bg-card/45">
         <div className="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 md:pl-[92px] lg:px-8 lg:pl-[92px]">
           <SpotlightCards
             items={focusAreas}
@@ -155,8 +178,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 md:pl-[92px] lg:px-8 lg:pl-[92px]">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <section className="anime-reveal mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 md:pl-[92px] lg:px-8 lg:pl-[92px]">
+        <div className="anime-reveal__item flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-sm font-semibold uppercase tracking-wide text-primary">
               Featured Work
@@ -179,7 +202,7 @@ export default function Home() {
             <LiquidGlassCard
               key={project.id}
               glassSize="default"
-              className="rounded-lg border-border/70 bg-card/85 p-6 shadow-sm"
+              className="anime-reveal__item rounded-lg border-border/70 bg-card/85 p-6 shadow-sm"
             >
               <div className="flex flex-wrap items-center gap-2">
                 <span className="rounded-md bg-primary/10 px-2.5 py-1 text-xs font-medium uppercase tracking-wide text-primary">
@@ -216,24 +239,15 @@ export default function Home() {
                     <ExternalLink className="h-4 w-4" />
                   </Link>
                 )}
-                {project.downloadUrl && (
-                  <Link
-                    href={project.downloadUrl}
-                    className="inline-flex items-center gap-2 text-sm font-medium text-primary"
-                  >
-                    Download package
-                    <Download className="h-4 w-4" />
-                  </Link>
-                )}
               </div>
             </LiquidGlassCard>
           ))}
         </div>
       </section>
 
-      <section className="border-y border-border/60 bg-card/45">
+      <section className="anime-reveal border-y border-border/60 bg-card/45">
         <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-16 sm:px-6 md:pl-[92px] lg:grid-cols-[0.8fr_1.2fr] lg:px-8 lg:pl-[92px]">
-          <div>
+          <div className="anime-reveal__item">
             <p className="text-sm font-semibold uppercase tracking-wide text-primary">
               Capability Stack
             </p>
@@ -252,7 +266,7 @@ export default function Home() {
                 <LiquidGlassCard
                   key={skill.title}
                   glassSize="sm"
-                  className="rounded-lg border-border/70 bg-background/80 p-5 shadow-sm"
+                  className="anime-reveal__item rounded-lg border-border/70 bg-background/80 p-5 shadow-sm"
                 >
                   <div className="flex items-center gap-3">
                     <h3 className="font-semibold text-foreground">
@@ -276,8 +290,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 md:pl-[92px] lg:px-8 lg:pl-[92px]">
-        <LiquidGlassCard className="rounded-lg border-border/70 bg-card/85 p-6 shadow-sm sm:p-8">
+      <section className="anime-reveal mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 md:pl-[92px] lg:px-8 lg:pl-[92px]">
+        <LiquidGlassCard className="anime-reveal__item rounded-lg border-border/70 bg-card/85 p-6 shadow-sm sm:p-8">
           <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
               <p className="text-sm font-semibold uppercase tracking-wide text-primary">

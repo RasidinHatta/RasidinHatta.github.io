@@ -140,6 +140,15 @@ export function Footer() {
               >
                 <ReactBit className="h-5 w-5" />
               </a>
+              <a
+                href="https://animejs.com"
+                target="_blank"
+                rel="noreferrer"
+                className="font-semibold hover:text-primary transition-colors"
+                title="Anime.js"
+              >
+                Anime.js
+              </a>
             </div>
           </div>
         </div>
