@@ -14,6 +14,7 @@ import { ArrowRight, Repeat2 } from "lucide-react";
 import Link from "next/link";
 import { ReactNode, useState } from "react";
 import { cn } from "@/lib/utils";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 export interface CardFlipProps {
   front?: ReactNode;
@@ -52,15 +53,15 @@ export default function CardFlip({
   const isCustom = Boolean(front || back);
   const isBusiness = size === "business";
 
-  return (
+  const card = (
     <div
       className={cn(
         "group relative w-full [perspective:2000px]",
         isBusiness
-          ? "aspect-[1.586/1] max-w-none"
+          ? "h-full max-w-none"
           : "h-[320px] max-w-[280px]",
         trigger === "click" && "cursor-pointer",
-        className
+        !isBusiness && className
       )}
       onClick={() => trigger === "click" && setIsFlipped((prev) => !prev)}
       onMouseEnter={() => trigger === "hover" && setIsFlipped(true)}
@@ -181,20 +182,20 @@ export default function CardFlip({
             <div
               className={cn(
                 "flex h-full",
-                isBusiness ? "flex-row gap-6" : "flex-col"
+                isBusiness ? "flex-col gap-5 sm:flex-row sm:gap-6" : "flex-col"
               )}
             >
               <div
                 className={cn(
-                  "flex-1",
-                  isBusiness ? "space-y-4" : "space-y-6"
+                  "flex-1 min-w-0",
+                  isBusiness ? "space-y-3 sm:space-y-4" : "space-y-6"
                 )}
               >
                 <div className="space-y-2">
                   <h3
                     className={cn(
                       "font-semibold text-zinc-900 leading-snug tracking-tight transition-all duration-500 ease-out-expo group-hover:translate-y-[-2px] dark:text-white",
-                      isBusiness ? "text-2xl" : "text-lg"
+                      isBusiness ? "text-xl sm:text-2xl" : "text-lg"
                     )}
                   >
                     {title}
@@ -202,17 +203,17 @@ export default function CardFlip({
                   <p
                     className={cn(
                       "line-clamp-2 text-zinc-600 tracking-tight transition-all duration-500 ease-out-expo group-hover:translate-y-[-2px] dark:text-zinc-400",
-                      isBusiness ? "max-w-sm text-base" : "text-sm"
+                      isBusiness ? "max-w-sm text-sm sm:text-base" : "text-sm"
                     )}
                   >
                     {description}
                   </p>
                 </div>
 
-                <div className={cn(isBusiness ? "grid grid-cols-2 gap-2" : "space-y-2")}>
+                <div className={cn(isBusiness ? "grid grid-cols-2 gap-2 sm:gap-2.5" : "space-y-2")}>
                   {features.map((feature, index) => (
                     <div
-                      className="flex items-center gap-2 text-sm text-zinc-700 transition-all duration-500 dark:text-zinc-300"
+                      className="flex min-w-0 items-center gap-2 text-xs text-zinc-700 transition-all duration-500 dark:text-zinc-300 sm:text-sm"
                       key={feature}
                       style={{
                         transform: isFlipped
@@ -222,8 +223,8 @@ export default function CardFlip({
                         transitionDelay: `${index * 100 + 200}ms`,
                       }}
                     >
-                      <ArrowRight className="h-3 w-3 text-orange-500" />
-                      <span>{feature}</span>
+                      <ArrowRight className="h-3 w-3 shrink-0 text-orange-500" />
+                      <span className="min-w-0 break-words leading-snug">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -233,7 +234,7 @@ export default function CardFlip({
                 className={cn(
                   "border-zinc-200 dark:border-zinc-800",
                   isBusiness
-                    ? "flex w-44 items-end border-l pl-5"
+                    ? "flex shrink-0 border-t pt-4 sm:w-44 sm:items-end sm:border-l sm:border-t-0 sm:pl-5 sm:pt-0"
                     : "mt-6 border-t pt-6"
                 )}
               >
@@ -324,5 +325,13 @@ export default function CardFlip({
                 }
             `}</style>
     </div>
+  );
+
+  if (!isBusiness) return card;
+
+  return (
+    <AspectRatio ratio={4 / 3} className={cn("w-full sm:aspect-[1.586/1]", className)}>
+      {card}
+    </AspectRatio>
   );
 }
