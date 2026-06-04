@@ -3,6 +3,28 @@ import { Project } from "@/types/projects";
 // Projects from your resume
 export const projects: Project[] = [
     {
+        id: 7,
+        title: "HP Act 2026 Loan Calculator – Malaysia",
+        description: "A Malaysian hire purchase calculator comparing flat-rate car financing with the HPAA 2026 reducing-balance method.",
+        longDescription: "This calculator helps Malaysian car buyers compare the older flat-rate hire purchase model with the HPAA 2026 reducing-balance financing method. It estimates monthly instalments, total repayment, total interest, and early settlement amounts. The app also includes charts, trace tables, and a legacy pre-2026 settlement calculator for clearer side-by-side comparison.",
+        image: "",
+        tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Radix UI", "Recharts", "Vercel"],
+        features: [
+            "Calculate Malaysian hire purchase monthly instalments",
+            "Compare old flat-rate financing with HPAA 2026 reducing-balance financing",
+            "Estimate early settlement amounts and savings",
+            "View repayment charts and balance trends",
+            "Inspect monthly or yearly payment trace tables",
+            "Includes legacy pre-2026 settlement calculator"
+        ],
+        githubUrl: "https://github.com/RasidinHatta/hire-purcase-act-june2026-calculator",
+        liveUrl: "https://hp-act-june2026-calculator.vercel.app",
+        period: "June 2026 - Present",
+        team: "Solo Project",
+        type: "personal",
+        status: "active"
+    },
+    {
         id: 1,
         title: "Study Archive Management System",
         description: "Document Management System using Waterfall methodology, featuring Authentication, RBAC, Content Preference, and Collaboration",
