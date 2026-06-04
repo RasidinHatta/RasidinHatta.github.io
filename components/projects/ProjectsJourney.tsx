@@ -18,11 +18,17 @@ import { CgWebsite } from "react-icons/cg";
 import AnimatedSection from "@/components/ui/animated-section";
 import { useState } from "react";
 
+const statusRank = (status: Project["status"]) => {
+  if (status === "active") return 0;
+  if (status === "completed") return 1;
+  return 2;
+};
+
 const ProjectsJourney = ({ featuredProjectId }: { featuredProjectId?: number }) => {
   const [expandedId, setExpandedId] = useState<number | null>(null);
   const visibleProjects = [...projects]
     .filter((project) => project.id !== featuredProjectId)
-    .sort((a, b) => a.id - b.id);
+    .sort((a, b) => statusRank(a.status) - statusRank(b.status) || a.id - b.id);
 
   return (
     <AnimatedSection>
