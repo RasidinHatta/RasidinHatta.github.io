@@ -234,7 +234,7 @@ export default function CardFlip({
                 className={cn(
                   "border-zinc-200 dark:border-zinc-800",
                   isBusiness
-                    ? "flex shrink-0 border-t pt-4 sm:w-44 sm:items-end sm:border-l sm:border-t-0 sm:pl-5 sm:pt-0"
+                    ? "flex shrink-0 items-center justify-center border-t pt-4 sm:w-44 sm:items-end sm:border-l sm:border-t-0 sm:justify-start sm:pl-5 sm:pt-0"
                     : "mt-6 border-t pt-6"
                 )}
               >
@@ -244,14 +244,14 @@ export default function CardFlip({
                     className={cn(
                       "group/start relative",
                       "flex items-center justify-between",
-                      "-m-3 rounded-xl p-3",
+                      "rounded-xl p-3",
                       "transition-all duration-300",
                       "bg-gradient-to-r from-zinc-100 via-zinc-100 to-zinc-100",
                       "dark:from-zinc-800 dark:via-zinc-800 dark:to-zinc-800",
                       "hover:from-0% hover:from-orange-500/10 hover:via-100% hover:via-orange-500/5 hover:to-100% hover:to-transparent",
                       "dark:hover:from-0% dark:hover:from-orange-500/20 dark:hover:via-100% dark:hover:via-orange-500/10 dark:hover:to-100% dark:hover:to-transparent",
                       "hover:scale-[1.02] hover:cursor-pointer",
-                      isBusiness && "w-full"
+                      isBusiness ? "w-full max-w-[280px]" : "-m-3"
                     )}
                     onClick={(event) => event.stopPropagation()}
                   >
@@ -274,8 +274,8 @@ export default function CardFlip({
                   className={cn(
                     "group/start relative",
                     "flex items-center justify-between",
-                    "-m-3 rounded-xl p-3",
-                    isBusiness && "w-full",
+                    "rounded-xl p-3",
+                    isBusiness ? "w-full max-w-[280px]" : "-m-3",
                     "transition-all duration-300",
                     "bg-gradient-to-r from-zinc-100 via-zinc-100 to-zinc-100",
                     "dark:from-zinc-800 dark:via-zinc-800 dark:to-zinc-800",
@@ -330,7 +330,7 @@ export default function CardFlip({
   if (!isBusiness) return card;
 
   return (
-    <AspectRatio ratio={4 / 3} className={cn("w-full sm:aspect-[1.586/1]", className)}>
+    <AspectRatio ratio={1.22} className={cn("w-full sm:aspect-[1.586/1]", className)}>
       {card}
     </AspectRatio>
   );
