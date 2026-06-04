@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function ProjectsPage() {
-  const firstProject = projects[0];
+  const firstProject = projects.find((project) => project.id === 1) ?? projects[0];
 
   return (
     <div className="min-h-screen bg-transparent">
@@ -75,7 +75,7 @@ export default function ProjectsPage() {
           </div>
         </Card>
 
-        <ProjectsJourney skipFirst />
+        <ProjectsJourney featuredProjectId={firstProject.id} />
       </div>
     </div>
   );

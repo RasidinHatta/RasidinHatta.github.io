@@ -7,7 +7,7 @@ export const projects: Project[] = [
         title: "HP Act 2026 Loan Calculator – Malaysia",
         description: "A Malaysian hire purchase calculator comparing flat-rate car financing with the HPAA 2026 reducing-balance method.",
         longDescription: "This calculator helps Malaysian car buyers compare the older flat-rate hire purchase model with the HPAA 2026 reducing-balance financing method. It estimates monthly instalments, total repayment, total interest, and early settlement amounts. The app also includes charts, trace tables, and a legacy pre-2026 settlement calculator for clearer side-by-side comparison.",
-        image: "",
+        image: "/projects/hire-purcase.png",
         tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Radix UI", "Recharts", "Vercel"],
         features: [
             "Calculate Malaysian hire purchase monthly instalments",

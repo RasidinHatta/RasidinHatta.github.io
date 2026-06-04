@@ -18,9 +18,11 @@ import { CgWebsite } from "react-icons/cg";
 import AnimatedSection from "@/components/ui/animated-section";
 import { useState } from "react";
 
-const ProjectsJourney = ({ skipFirst = false }: { skipFirst?: boolean }) => {
+const ProjectsJourney = ({ featuredProjectId }: { featuredProjectId?: number }) => {
   const [expandedId, setExpandedId] = useState<number | null>(null);
-  const visibleProjects = skipFirst ? projects.slice(1) : projects;
+  const visibleProjects = [...projects]
+    .filter((project) => project.id !== featuredProjectId)
+    .sort((a, b) => a.id - b.id);
 
   return (
     <AnimatedSection>
