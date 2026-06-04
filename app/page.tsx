@@ -33,7 +33,7 @@ const focusAreas: SpotlightItem[] = [
     color: "#38bdf8",
   },
   {
-    title: "Desktop Support Tools1",
+    title: "Desktop Support Tools",
     description:
       "Flutter Windows utilities, installers, update scripts, and support-friendly database maintenance actions.",
     icon: TerminalSquare,
